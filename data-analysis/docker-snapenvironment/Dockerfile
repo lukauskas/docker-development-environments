@@ -16,7 +16,9 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
 # Install some needed R packages
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore")); install.packages("WGCNA")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("precrec")'
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("precrec")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggplot2")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")'
 
 RUN pip install --upgrade pip \
     && pip install --upgrade click==6.7 \
