@@ -36,7 +36,7 @@ RUN pip install --upgrade pip \
                              rpy2==2.9.0 \
                              scikits.bootstrap==0.3.3 \
                              scikit-learn==0.19.0 \
-                             scipy==0.19.1 \
+                             scipy==1.0.0 \
                              git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d02167c \
                              statsmodels==0.8.0 \
                              tables==3.4.2 \
