@@ -18,29 +18,36 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://biocon
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore")); install.packages("WGCNA")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("precrec")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggplot2")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")'
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("corpcor")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("fdrtool")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ppcor")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("matrixcalc")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("devtools"); library('devtools'); install_github('wyguo/RLowPC', ref='a3f741a')
 
 RUN pip install --upgrade pip \
     && pip install --upgrade click==6.7 \
-                             cython==0.26 \
+                             cython==0.27.3 \
                              fastcluster==1.1.24 \
                              jupyter==1.0.0 \
-                             lxml==3.8.0 \
-                             matplotlib==2.0.2 \
+                             lxml==4.1.1 \
+                             matplotlib==2.1.0 \
                              mygene==3.0.0 \
-                             numpy==1.13.1 \
+                             numpy==1.13.3 \
                              networkx==2.0 \
-                             pandas==0.20.3 \
+                             pandas==0.21.0 \
                              PyYAML==3.12 \
                              requests==2.18.4 \
-                             rpy2==2.9.0 \
-                             scikits.bootstrap==0.3.3 \
-                             scikit-learn==0.19.0 \
+                             rpy2==2.9.1 \
+                             scikits.bootstrap==1.0.0 \
+                             scikit-learn==0.19.1 \
                              scipy==1.0.0 \
                              git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d02167c \
                              statsmodels==0.8.0 \
                              tables==3.4.2 \
-                             tqdm==4.15.0 \
-                             xlrd==1.0.0 \
+                             tqdm==4.19.4 \
+                             xlrd==1.1.0 \
                              XlsxWriter==1.0.2 \
     && rm -rf ~/.cache/pip
+
+RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
