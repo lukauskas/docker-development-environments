@@ -23,7 +23,7 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://biocon
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("fdrtool")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ppcor")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("matrixcalc")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("devtools"); library('devtools'); install_github('wyguo/RLowPC', ref='a3f741a')
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")'
 
 RUN pip install --upgrade pip \
     && pip install --upgrade click==6.7 \
