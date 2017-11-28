@@ -24,6 +24,7 @@ RUN pip install --upgrade pip \
                              goatools==0.7.11 \
                              jupyter==1.0.0 \
                              matplotlib==2.1.0 \
+                             mygene==3.0.0 \
                              numpy==1.13.3 \
                              pandas==0.21.0 \
                              rpy2==2.9.1 \
