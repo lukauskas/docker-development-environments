@@ -26,6 +26,7 @@ RUN pip install --upgrade pip \
                              matplotlib==2.1.0 \
                              numpy==1.13.3 \
                              pandas==0.21.0 \
+                             requests==2.18.4 \
                              rpy2==2.9.1 \
                              scikits.bootstrap==1.0.0 \
                              scikit-learn==0.19.1 \
