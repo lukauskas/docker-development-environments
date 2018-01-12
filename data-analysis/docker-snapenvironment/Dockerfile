@@ -29,6 +29,7 @@ RUN pip install --upgrade pip \
     && pip install --upgrade click==6.7 \
                              cython==0.27.3 \
                              fastcluster==1.1.24 \
+                             goatools=0.7.11 \
                              jupyter==1.0.0 \
                              lxml==4.1.1 \
                              matplotlib==2.1.0 \
@@ -36,6 +37,7 @@ RUN pip install --upgrade pip \
                              numpy==1.13.3 \
                              networkx==2.0 \
                              pandas==0.21.0 \
+                             python-louvain==0.10 \
                              PyYAML==3.12 \
                              requests==2.18.4 \
                              rpy2==2.9.1 \
