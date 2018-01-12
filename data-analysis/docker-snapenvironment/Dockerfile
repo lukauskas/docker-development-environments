@@ -29,7 +29,7 @@ RUN pip install --upgrade pip \
     && pip install --upgrade click==6.7 \
                              cython==0.27.3 \
                              fastcluster==1.1.24 \
-                             goatools=0.7.11 \
+                             goatools==0.7.11 \
                              jupyter==1.0.0 \
                              lxml==4.1.1 \
                              matplotlib==2.1.1 \
