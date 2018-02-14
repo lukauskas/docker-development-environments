@@ -14,7 +14,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && rm -rf /var/lib/apt/lists/*
 
 # Install some needed R packages
-RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://bioconductor.org/biocLite.R"); biocLite(c("limma", "statmod", "qvalue"))' \
+RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://bioconductor.org/biocLite.R"); biocLite(c("limma", "statmod", "qvalue", "edgeR"))' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggplot2")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")'
 
@@ -25,6 +25,7 @@ RUN pip install --upgrade pip \
                              goatools==0.7.11 \
                              jupyter==1.0.0 \
                              matplotlib==2.1.0 \
+                             matplotlib-venn==0.11.5 \
                              numpy==1.13.3 \
                              pandas==0.21.0 \
                              requests==2.18.4 \
