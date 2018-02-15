@@ -8,12 +8,12 @@ lxml==4.1.1
 matplotlib==2.1.1
 mygene==3.0.0
 numpy==1.14.0
-networkx==2.0
+networkx==2.1
 pandas==0.22.0
 python-louvain==0.10
 PyYAML==3.12
 requests==2.18.4
-rpy2==2.9.1
+rpy2==2.9.2
 scikits.bootstrap==1.0.0
 scikit-learn==0.19.1
 scipy==1.0.0
