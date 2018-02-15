@@ -19,6 +19,7 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://biocon
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")'
 
 RUN pip install --upgrade pip \
+    && pip install --upgrade -r /requirements.txt \
     && pip install --upgrade biopython==1.67 \
                              cython==0.27.3 \
                              fastcluster==1.1.24 \
