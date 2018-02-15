@@ -18,28 +18,10 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://biocon
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggplot2")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")'
 
+ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
     && pip install --upgrade -r /requirements.txt \
-    && pip install --upgrade biopython==1.67 \
-                             cython==0.27.3 \
-                             fastcluster==1.1.24 \
-                             goatools==0.7.11 \
-                             jupyter==1.0.0 \
-                             matplotlib==2.1.0 \
-                             matplotlib-venn==0.11.5 \
-                             numpy==1.13.3 \
-                             pandas==0.21.0 \
-                             requests==2.18.4 \
-                             rpy2==2.9.1 \
-                             scikits.bootstrap==1.0.0 \
-                             scikit-learn==0.19.1 \
-                             scipy==1.0.0 \
-                             git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d02167c \
-                             statsmodels==0.8.0 \
-                             tables==3.4.2 \
-                             tqdm==4.19.4 \
-                             xlrd==1.1.0 \
-                             XlsxWriter==1.0.2 \
+    && rm /requirements.txt \
     && rm -rf ~/.cache/pip
 
 RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
