@@ -6,7 +6,7 @@ jupyter==1.0.0
 matplotlib==2.1.0
 matplotlib-venn==0.11.5
 numpy==1.13.3
-pandas==0.21.0
+pandas==0.22.0
 requests==2.18.4
 rpy2==2.9.2
 scikits.bootstrap==1.0.0
