@@ -25,32 +25,10 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://biocon
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("matrixcalc")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")'
 
+ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
-    && pip install --upgrade click==6.7 \
-                             cython==0.27.3 \
-                             fastcluster==1.1.24 \
-                             fa2==0.2 \
-                             goatools==0.7.11 \
-                             jupyter==1.0.0 \
-                             lxml==4.1.1 \
-                             matplotlib==2.1.1 \
-                             mygene==3.0.0 \
-                             numpy==1.14.0 \
-                             networkx==2.0 \
-                             pandas==0.22.0 \
-                             python-louvain==0.10 \
-                             PyYAML==3.12 \
-                             requests==2.18.4 \
-                             rpy2==2.9.1 \
-                             scikits.bootstrap==1.0.0 \
-                             scikit-learn==0.19.1 \
-                             scipy==1.0.0 \
-                             git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d02167c \
-                             statsmodels==0.8.0 \
-                             tables==3.4.2 \
-                             tqdm==4.19.5 \
-                             xlrd==1.1.0 \
-                             XlsxWriter==1.0.2 \
+    && pip install --upgrade -r /requirements.txt \
+    && rm /requirements.txt \
     && rm -rf ~/.cache/pip
 
 RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
