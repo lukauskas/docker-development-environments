@@ -29,6 +29,7 @@ ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
     && pip install --upgrade -r /requirements.txt \
     && rm /requirements.txt \
-    && rm -rf ~/.cache/pip
+    && rm -rf ~/.cache/pip \
+    && rm -rf /src
 
 RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
