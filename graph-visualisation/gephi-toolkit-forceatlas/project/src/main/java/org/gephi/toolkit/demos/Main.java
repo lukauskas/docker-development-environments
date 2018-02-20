@@ -20,9 +20,31 @@ along with Gephi.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.gephi.toolkit.demos;
 
+import net.sourceforge.argparse4j.ArgumentParsers;
+import net.sourceforge.argparse4j.inf.ArgumentParser;
+import net.sourceforge.argparse4j.inf.ArgumentParserException;
+import net.sourceforge.argparse4j.inf.Namespace;
+
 public class Main {
 
     public static void main(String[] args) {
+
+        ArgumentParser parser = ArgumentParsers.newFor("Main").build()
+                .defaultHelp(true)
+                .description("Create ForceAtlas2 visualisation for graph.");
+        parser.addArgument("input_file")
+                .help("File to create visualisation for");
+
+
+        Namespace ns = null;
+        try {
+            ns = parser.parseArgs(args);
+        } catch (ArgumentParserException e) {
+            parser.handleError(e);
+            System.exit(1);
+        }
+
+        String input_file = ns.getString("input_file");
 
         ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation();
         autoLayout.script();
