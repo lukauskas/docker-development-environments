@@ -45,8 +45,8 @@ public class Main {
         }
 
         String input_file = ns.getString("input_file");
-
-        ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation();
+        System.out.println("Processing " + input_file);
+        ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation(input_file);
         autoLayout.script();
 
     }

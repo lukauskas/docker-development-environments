@@ -53,6 +53,12 @@ import org.openide.util.Lookup;
 
 public class ForceAtlasVisualisation {
 
+    private String input_file;
+
+    public ForceAtlasVisualisation(String input_file) {
+        this.input_file = input_file;
+    }
+
     public void script() {
         //Init a project - and therefore a workspace
         ProjectController pc = Lookup.getDefault().lookup(ProjectController.class);
@@ -64,7 +70,7 @@ public class ForceAtlasVisualisation {
         ImportController importController = Lookup.getDefault().lookup(ImportController.class);
         Container container;
         try {
-            File file = new File("graph.q.0.001.gexf");
+            File file = new File(this.input_file);
             container = importController.importFile(file);
         } catch (Exception ex) {
             ex.printStackTrace();
