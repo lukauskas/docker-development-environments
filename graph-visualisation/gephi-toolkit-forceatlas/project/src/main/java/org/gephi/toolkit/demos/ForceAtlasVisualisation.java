@@ -27,6 +27,8 @@ package org.gephi.toolkit.demos;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 import org.gephi.graph.api.DirectedGraph;
 import org.gephi.graph.api.GraphController;
@@ -54,9 +56,23 @@ import org.openide.util.Lookup;
 public class ForceAtlasVisualisation {
 
     private String input_file;
+    private Double gravity;
+    private Double scale;
+    private Integer duration_seconds;
+    private Float fast_proportion;
 
-    public ForceAtlasVisualisation(String input_file) {
+    private String output_directory;
+
+    public ForceAtlasVisualisation(String input_file, Double gravity, Double scale,
+                                   Integer duration_seconds, Float fast_proportion,
+                                   String output_directory) {
         this.input_file = input_file;
+        this.gravity = gravity;
+        this.scale = scale;
+        this.duration_seconds = duration_seconds;
+        this.fast_proportion = fast_proportion;
+        this.output_directory = output_directory;
+
     }
 
     public void script() {
@@ -69,13 +85,15 @@ public class ForceAtlasVisualisation {
         //Import file
         ImportController importController = Lookup.getDefault().lookup(ImportController.class);
         Container container;
+        File file = new File(this.input_file);
         try {
-            File file = new File(this.input_file);
             container = importController.importFile(file);
         } catch (Exception ex) {
             ex.printStackTrace();
             return;
         }
+
+        String basename = file.getName();
 
 
         //Append container to graph structure
@@ -87,29 +105,27 @@ public class ForceAtlasVisualisation {
         System.out.println("Nodes: " + graph.getNodeCount());
         System.out.println("Edges: " + graph.getEdgeCount());
 
-        //Layout for 1 minute
-        AutoLayout autoLayout = new AutoLayout(60, TimeUnit.SECONDS);
+
+        AutoLayout autoLayout = new AutoLayout(this.duration_seconds, TimeUnit.SECONDS);
         autoLayout.setGraphModel(graphModel);
 
-        double scaling_ratio = 8.0;
-        double gravity = 200;
 
 
         ForceAtlas2 fa2_fast = new ForceAtlas2Builder().buildLayout();
-        fa2_fast.setScalingRatio(scaling_ratio);
-        fa2_fast.setGravity(gravity);
+        fa2_fast.setScalingRatio(this.scale);
+        fa2_fast.setGravity(this.gravity);
         fa2_fast.setBarnesHutOptimize(Boolean.TRUE);
         fa2_fast.setAdjustSizes(Boolean.FALSE);
 
 
         ForceAtlas2 fa2_adjustment = new ForceAtlas2Builder().buildLayout();
-        fa2_adjustment.setScalingRatio(scaling_ratio);
-        fa2_adjustment.setGravity(gravity);
+        fa2_adjustment.setScalingRatio(this.scale);
+        fa2_adjustment.setGravity(this.gravity);
         fa2_adjustment.setBarnesHutOptimize(Boolean.FALSE);
         fa2_adjustment.setAdjustSizes(Boolean.TRUE);
 
-        autoLayout.addLayout(fa2_fast, 0.8f);
-        autoLayout.addLayout(fa2_adjustment, 0.2f);
+        autoLayout.addLayout(fa2_fast, this.fast_proportion);
+        autoLayout.addLayout(fa2_adjustment, 1 - this.fast_proportion);
         autoLayout.execute();
 
         fa2_fast.endAlgo();
@@ -125,8 +141,15 @@ public class ForceAtlasVisualisation {
 
         //Export
         ExportController ec = Lookup.getDefault().lookup(ExportController.class);
+
         try {
-            ec.exportFile(new File("autolayout.pdf"));
+            ec.exportFile(new File(this.output_directory, basename + ".pdf"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            ec.exportFile(new File(this.output_directory, basename + ".gexf"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

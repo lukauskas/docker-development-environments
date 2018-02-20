@@ -21,6 +21,7 @@ along with Gephi.  If not, see <http://www.gnu.org/licenses/>.
 package org.gephi.toolkit.demos;
 
 import net.sourceforge.argparse4j.ArgumentParsers;
+import net.sourceforge.argparse4j.impl.Arguments;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
@@ -32,7 +33,20 @@ public class Main {
         ArgumentParser parser = ArgumentParsers.newFor("Main").build()
                 .defaultHelp(true)
                 .description("Create ForceAtlas2 visualisation for graph.");
-        parser.addArgument("input_file")
+        parser.addArgument("--gravity").type(Double.class).setDefault(30.0)
+                 .help("Gravity parameter of ForceAtlas2");
+        parser.addArgument("--scale").type(Double.class).setDefault(3.0)
+                .help("Scale parameter of ForceAtlas2");
+        parser.addArgument("--duration").type(Integer.class).setDefault(60)
+                .help("Duration in seconds to run the algorithm for");
+        parser.addArgument("--proportion").type(Float.class).setDefault(0.8f)
+                .help("Proportion of time to allocate for fast ForceAtlas2." +
+                        "The rest is allocated for slow, no-overlap fa2");
+        parser.addArgument("-O", "--outdir").type(Arguments.fileType().verifyIsDirectory().verifyCanWrite())
+                .setDefault(".")
+                .help("Output directory");
+
+        parser.addArgument("input_file").type(Arguments.fileType().acceptSystemIn().verifyCanRead())
                 .help("File to create visualisation for");
 
 
@@ -46,7 +60,16 @@ public class Main {
 
         String input_file = ns.getString("input_file");
         System.out.println("Processing " + input_file);
-        ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation(input_file);
+
+        Double gravity = ns.getDouble("gravity");
+        Double scale = ns.getDouble("scale");
+        Integer duration_seconds = ns.getInt("duration");
+        Float fast_proportion = ns.getFloat("proportion");
+
+        String output_directory = ns.getString("outdir");
+
+        ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation(input_file, gravity, scale,
+                duration_seconds, fast_proportion, output_directory);
         autoLayout.script();
 
     }
