@@ -37,6 +37,14 @@ public class Main {
                  .help("Gravity parameter of ForceAtlas2");
         parser.addArgument("--scale").type(Double.class).setDefault(3.0)
                 .help("Scale parameter of ForceAtlas2");
+
+        parser.addArgument("--theta").type(Double.class).setDefault(1.2);
+        parser.addArgument("--tolerance").type(Double.class).setDefault(1.0);
+        parser.addArgument("--linlog").type(Boolean.class).setDefault(Boolean.FALSE);
+        parser.addArgument("--weightinfluence").type(Double.class).setDefault(1.0);
+        parser.addArgument("--stronggravity").type(Boolean.class).setDefault(Boolean.FALSE);
+        parser.addArgument("--threads").type(Integer.class).setDefault(7);
+
         parser.addArgument("--duration").type(Integer.class).setDefault(60)
                 .help("Duration in seconds to run the algorithm for");
         parser.addArgument("--proportion").type(Float.class).setDefault(0.8f)
@@ -63,13 +71,23 @@ public class Main {
 
         Double gravity = ns.getDouble("gravity");
         Double scale = ns.getDouble("scale");
+        Double barnes_hut_theta = ns.getDouble("theta");
+        Double jitter_tolerance = ns.getDouble("tolerance");
+        Boolean lin_log_mode = ns.getBoolean("linlog");
+        Double edge_weight_influence = ns.getDouble("weightinfluence");
+
         Integer duration_seconds = ns.getInt("duration");
         Float fast_proportion = ns.getFloat("proportion");
 
         String output_directory = ns.getString("outdir");
 
-        ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation(input_file, gravity, scale,
-                duration_seconds, fast_proportion, output_directory);
+        Boolean strong_gravity = ns.getBoolean("stronggravity");
+        Integer threads = ns.getInt("threads");
+
+        ForceAtlasVisualisation autoLayout = new ForceAtlasVisualisation(input_file, output_directory,
+                gravity, scale, barnes_hut_theta, jitter_tolerance, lin_log_mode, edge_weight_influence,
+                strong_gravity, threads,
+                duration_seconds, fast_proportion);
         autoLayout.script();
 
     }

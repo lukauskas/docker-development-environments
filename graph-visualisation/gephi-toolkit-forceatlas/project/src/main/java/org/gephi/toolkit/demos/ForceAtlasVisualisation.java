@@ -56,23 +56,39 @@ import org.openide.util.Lookup;
 public class ForceAtlasVisualisation {
 
     private String input_file;
+    private String output_directory;
+
     private Double gravity;
     private Double scale;
+    private Double barnes_hut_theta;
+    private Double jitter_tolerance;
+
+    private Boolean lin_log_mode;
+    private Double edge_weight_influence;
+    private Boolean strong_gravity;
+
+    private Integer threads;
     private Integer duration_seconds;
     private Float fast_proportion;
 
-    private String output_directory;
 
-    public ForceAtlasVisualisation(String input_file, Double gravity, Double scale,
-                                   Integer duration_seconds, Float fast_proportion,
-                                   String output_directory) {
+    public ForceAtlasVisualisation(String input_file, String output_directory, Double gravity, Double scale,
+                                   Double barnes_hut_theta, Double jitter_tolerance, Boolean lin_log_mode,
+                                   Double edge_weight_influence,
+                                   Boolean strong_gravity, Integer threads,
+                                   Integer duration_seconds, Float fast_proportion) {
         this.input_file = input_file;
+        this.output_directory = output_directory;
         this.gravity = gravity;
         this.scale = scale;
+        this.barnes_hut_theta = barnes_hut_theta;
+        this.jitter_tolerance = jitter_tolerance;
+        this.lin_log_mode = lin_log_mode;
+        this.edge_weight_influence = edge_weight_influence;
+        this.strong_gravity = strong_gravity;
+        this.threads = threads;
         this.duration_seconds = duration_seconds;
         this.fast_proportion = fast_proportion;
-        this.output_directory = output_directory;
-
     }
 
     public void script() {
@@ -109,11 +125,26 @@ public class ForceAtlasVisualisation {
         AutoLayout autoLayout = new AutoLayout(this.duration_seconds, TimeUnit.SECONDS);
         autoLayout.setGraphModel(graphModel);
 
-
+        System.out.println("Scaling: " + this.scale);
+        System.out.println("Gravity: " + this.gravity);
+        System.out.println("Theta: " + this.barnes_hut_theta);
+        System.out.println("Jitter tolerance: " + this.jitter_tolerance);
+        System.out.println("Lin-log mode: "+ this.lin_log_mode);
+        System.out.println("Edge weight influence: " + this.edge_weight_influence);
+        System.out.println("Strong gravity: " + this.strong_gravity);
+        System.out.println("Threads: " + this.threads);
 
         ForceAtlas2 fa2_fast = new ForceAtlas2Builder().buildLayout();
         fa2_fast.setScalingRatio(this.scale);
         fa2_fast.setGravity(this.gravity);
+        fa2_fast.setBarnesHutTheta(this.barnes_hut_theta);
+        fa2_fast.setJitterTolerance(this.jitter_tolerance);
+        fa2_fast.setLinLogMode(this.lin_log_mode);
+        fa2_fast.setEdgeWeightInfluence(this.edge_weight_influence);
+        fa2_fast.setStrongGravityMode(this.strong_gravity);
+        fa2_fast.setThreadsCount(this.threads);
+
+
         fa2_fast.setBarnesHutOptimize(Boolean.TRUE);
         fa2_fast.setAdjustSizes(Boolean.FALSE);
 
@@ -121,6 +152,13 @@ public class ForceAtlasVisualisation {
         ForceAtlas2 fa2_adjustment = new ForceAtlas2Builder().buildLayout();
         fa2_adjustment.setScalingRatio(this.scale);
         fa2_adjustment.setGravity(this.gravity);
+        fa2_adjustment.setBarnesHutTheta(this.barnes_hut_theta);
+        fa2_adjustment.setJitterTolerance(this.jitter_tolerance);
+        fa2_adjustment.setLinLogMode(this.lin_log_mode);
+        fa2_adjustment.setEdgeWeightInfluence(this.edge_weight_influence);
+        fa2_adjustment.setStrongGravityMode(this.strong_gravity);
+        fa2_adjustment.setThreadsCount(this.threads);
+
         fa2_adjustment.setBarnesHutOptimize(Boolean.FALSE);
         fa2_adjustment.setAdjustSizes(Boolean.TRUE);
 
