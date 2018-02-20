@@ -8,6 +8,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get update \
     && apt-get install -y libhdf5-dev \
                           nodejs \
+                          openjdk-8-jdk \
                           r-base \
     && apt-get -yq autoremove \
     && apt-get clean \
