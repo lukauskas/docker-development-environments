@@ -6,7 +6,8 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && echo "deb http://ftp.de.debian.org/debian testing non-free" >> /etc/apt/sources.list \
     && echo "deb http://ftp.de.debian.org/debian testing main" >> /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install -y libhdf5-dev \
+    && apt-get install -y git \
+                          libhdf5-dev \
                           nodejs \
                           openjdk-8-jdk \
                           r-base \
