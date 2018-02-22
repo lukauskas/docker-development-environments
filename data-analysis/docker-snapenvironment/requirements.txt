@@ -2,7 +2,7 @@ click==6.7
 cython==0.27.3
 fastcluster==1.1.24
 fa2==0.2
-goatools==0.7.11
+goatools==0.8.2
 jupyter==1.0.0
 lxml==4.1.1
 matplotlib==2.1.2
