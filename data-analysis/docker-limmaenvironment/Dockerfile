@@ -23,6 +23,11 @@ RUN pip install --upgrade pip \
     && pip install --upgrade -r /requirements.txt \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
-    && rm -rf /src 
+    && rm -rf /src
+
+RUN jupyter contrib nbextension install --system \
+    && jupyter nbextension install --py hide_code \
+    && jupyter nbextension enable --py hide_code \
+    && jupyter serverextension enable --py hide_code
 
 RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
