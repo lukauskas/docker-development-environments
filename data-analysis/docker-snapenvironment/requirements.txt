@@ -5,7 +5,7 @@ fa2==0.2
 goatools==0.8.2
 jupyter==1.0.0
 lxml==4.1.1
-matplotlib==2.1.2
+matplotlib==2.2.0
 mygene==3.0.0
 numpy==1.14.1
 networkx==2.1
