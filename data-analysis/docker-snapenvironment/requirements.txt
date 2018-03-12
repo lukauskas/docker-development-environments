@@ -21,6 +21,6 @@ git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d021
 sh==1.12.14
 statsmodels==0.8.0
 tables==3.4.2
-tqdm==4.19.6
+tqdm==4.19.7
 xlrd==1.1.0
 XlsxWriter==1.0.2
