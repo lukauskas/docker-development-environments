@@ -16,16 +16,16 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && rm -rf /var/lib/apt/lists/*
 
 # Install some needed R packages
-RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db")); install.packages("WGCNA")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("precrec")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggplot2")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ggrepel")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("corpcor")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("fdrtool")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("ppcor")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("matrixcalc")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=50); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")'
+RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db")); install.packages("WGCNA")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("precrec")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggrepel")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("corpcor")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("fdrtool")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ppcor")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("matrixcalc")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")'
 
 ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
