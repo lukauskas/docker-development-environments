@@ -6,7 +6,7 @@ goatools==0.8.2
 graph-tool==2.11
 jupyter==1.0.0
 lxml==4.2.0
-matplotlib==2.2.0
+matplotlib==2.2.2
 mygene==3.0.0
 numpy==1.14.2
 networkx==2.1
