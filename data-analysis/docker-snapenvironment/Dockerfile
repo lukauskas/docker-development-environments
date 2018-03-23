@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.6-stretch
 
 # Some ideas from https://github.com/in-silico/judge-bot/blob/768238c1eb0875a1d7800343755d70fd432a28c2/debian/Dockerfile
 # Install R, libhdf5 and nodejs
