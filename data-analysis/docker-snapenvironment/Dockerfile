@@ -5,12 +5,15 @@ FROM python:3.6
 RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sources.list \
     && echo "deb http://ftp.de.debian.org/debian testing non-free" >> /etc/apt/sources.list \
     && echo "deb http://ftp.de.debian.org/debian testing main" >> /etc/apt/sources.list \
+    && echo "deb http://downloads.skewed.de/apt/jessie jessie main" >> /etc/apt/sources.list \
+    && echo "deb-src http://downloads.skewed.de/apt/jessie jessie main" >> /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install -y git \
-                          libhdf5-dev \
-                          nodejs \
-                          openjdk-8-jdk \
-                          r-base \
+    && apt-get install -y --force-yes git \
+                                      libhdf5-dev \
+                                      nodejs \
+                                      openjdk-8-jdk \
+                                      python3-graph-tool \
+                                      r-base \
     && apt-get -yq autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
