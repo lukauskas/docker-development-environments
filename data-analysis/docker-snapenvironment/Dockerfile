@@ -5,8 +5,8 @@ FROM python:3.6
 RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sources.list \
     && echo "deb http://ftp.de.debian.org/debian testing non-free" >> /etc/apt/sources.list \
     && echo "deb http://ftp.de.debian.org/debian testing main" >> /etc/apt/sources.list \
-    && echo "deb http://downloads.skewed.de/apt/jessie jessie universe" >> /etc/apt/sources.list \
-    && echo "deb-src http://downloads.skewed.de/apt/jessie jessie universe" >> /etc/apt/sources.list \
+    && echo "deb http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
+    && echo "deb-src http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --force-yes git \
                                       libhdf5-dev \
