@@ -5,6 +5,7 @@ fa2==0.2
 feather-format==0.4.0
 goatools==0.8.2
 joblib==0.11
+joypy==0.1.7
 jupyter==1.0.0
 lxml==4.2.1
 matplotlib==2.2.2
