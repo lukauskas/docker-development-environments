@@ -1,3 +1,9 @@
+FROM buildpack-deps:stretch as builder
+RUN mkdir /tmp/dapg \
+    && wget -q http://www.inf.udec.cl/~chernand/sources/dapg/dapg_prot_complexes-v1.1.tgz -O /tmp/dapg/dapg_prot_complexes.tgz \
+    && cd /tmp/dapg/ && tar xvf dapg_prot_complexes.tgz \
+    && cd dapg_complexes && make
+
 FROM python:3.6-stretch
 
 # Some ideas from https://github.com/in-silico/judge-bot/blob/768238c1eb0875a1d7800343755d70fd432a28c2/debian/Dockerfile
@@ -29,6 +35,8 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://biocond
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ppcor")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("matrixcalc")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")'
+
+COPY --from=builder /tmp/dapg/dapg_complexes/bin/* /usr/bin/
 
 ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
