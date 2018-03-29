@@ -22,7 +22,7 @@ rpy2==2.9.2
 scikits.bootstrap==1.0.0
 scikit-learn==0.19.1
 scipy==1.0.1
-git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d02167c#egg=seaborn
+git+https://github.com/lukauskas/seaborn.git@8f26af66e6a23333a706c3e5d04977ea00c0cde3#egg=seaborn
 sh==1.12.14
 statsmodels==0.8.0
 tables==3.4.2
