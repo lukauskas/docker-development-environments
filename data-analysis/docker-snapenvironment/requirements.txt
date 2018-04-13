@@ -1,5 +1,5 @@
 click==6.7
-cython==0.28.1
+cython==0.28.2
 fastcluster==1.1.24
 fa2==0.2
 feather-format==0.4.0
