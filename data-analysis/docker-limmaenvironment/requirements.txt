@@ -1,5 +1,5 @@
 biopython==1.71
-cython==0.28.1
+cython==0.28.2
 fastcluster==1.1.24
 goatools==0.8.2
 hide_code==0.5.0
