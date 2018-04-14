@@ -11,7 +11,7 @@ mygene==3.0.0
 numpy==1.14.2
 pandas==0.22.0
 requests==2.18.4
-rpy2==2.9.2
+rpy2==2.9.3
 scikits.bootstrap==1.0.0
 scikit-learn==0.19.1
 scipy==1.0.1
