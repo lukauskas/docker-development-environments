@@ -27,5 +27,6 @@ sh==1.12.14
 statsmodels==0.8.0
 tables==3.4.2
 tqdm==4.22.0
+tzlocal==1.5.1
 xlrd==1.1.0
 XlsxWriter==1.0.4
