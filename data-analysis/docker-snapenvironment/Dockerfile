@@ -26,7 +26,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
 
 # Install some needed R packages
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db")); install.packages("WGCNA")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db", "GOSemSim")); install.packages("WGCNA")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("precrec")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggrepel")' \
