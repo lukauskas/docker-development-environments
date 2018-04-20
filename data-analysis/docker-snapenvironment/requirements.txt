@@ -3,8 +3,6 @@ click==6.7
 cython==0.28.2
 fastcluster==1.1.24
 fa2==0.2
-feather-format==0.4.0
-goatools==0.8.2
 joblib==0.11
 joypy==0.1.8
 jupyter==1.0.0
@@ -14,8 +12,6 @@ mygene==3.0.0
 numpy==1.14.2
 networkx==2.1
 pandas==0.22.0
-py2cytoscape==0.6.2
-pyarrow==0.9.0
 python-louvain==0.10
 PyYAML==3.12
 requests==2.18.4
@@ -25,6 +21,7 @@ scikit-learn==0.19.1
 scipy==1.0.1
 git+https://github.com/lukauskas/seaborn.git@8f26af66e6a23333a706c3e5d04977ea00c0cde3#egg=seaborn
 sh==1.12.14
+git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb
 statsmodels==0.8.0
 tables==3.4.2
 tqdm==4.22.0
