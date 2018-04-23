@@ -43,6 +43,8 @@ COPY --from=builder /tmp/dapg/dapg_complexes/bin/* /usr/bin/
 ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
     && pip install --upgrade -r /requirements.txt \
+    # This needs Cython et al to be installed beforehand
+    && pip install git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src

@@ -21,7 +21,6 @@ scikit-learn==0.19.1
 scipy==1.0.1
 git+https://github.com/lukauskas/seaborn.git@8f26af66e6a23333a706c3e5d04977ea00c0cde3#egg=seaborn
 sh==1.12.14
-git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb
 statsmodels==0.8.0
 tables==3.4.2
 tqdm==4.22.0
