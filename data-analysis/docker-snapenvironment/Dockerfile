@@ -15,11 +15,13 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && echo "deb-src http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --force-yes git \
+                                      graphviz \
                                       libhdf5-dev \
                                       nodejs \
                                       openjdk-8-jdk \
                                       python3-graph-tool \
                                       r-base \
+                                      ttf-freefont \
     && apt-get -yq autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
