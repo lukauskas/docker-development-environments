@@ -22,7 +22,7 @@ scipy==1.0.1
 git+https://github.com/lukauskas/seaborn.git@8f26af66e6a23333a706c3e5d04977ea00c0cde3#egg=seaborn
 sh==1.12.14
 statsmodels==0.8.0
-tables==3.4.2
+tables==3.4.3
 tqdm==4.22.0
 tzlocal==1.5.1
 xlrd==1.1.0
