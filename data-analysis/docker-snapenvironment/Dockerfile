@@ -26,6 +26,10 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Font for XKCD like graphs
+RUN wget https://github.com/shreyankg/xkcd-desktop/blob/master/Humor-Sans.ttf -O /usr/share/fonts/truetype/Humor-Sans.ttf \
+    && fc-cache -f -v
+
 # Install some needed R packages
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db", "GOSemSim")); install.packages("WGCNA")' \
