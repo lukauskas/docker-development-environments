@@ -14,7 +14,8 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && echo "deb http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
     && echo "deb-src http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install -y --force-yes git \
+    && apt-get install -y --force-yes fonts-humor-sans \
+                                      git \
                                       graphviz \
                                       libhdf5-dev \
                                       nodejs \
@@ -25,10 +26,6 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get -yq autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-# Font for XKCD like graphs
-RUN wget https://github.com/shreyankg/xkcd-desktop/blob/master/Humor-Sans.ttf -O /usr/share/fonts/truetype/Humor-Sans.ttf \
-    && fc-cache -f -v
 
 # Install some needed R packages
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
