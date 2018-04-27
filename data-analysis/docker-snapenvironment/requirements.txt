@@ -1,7 +1,6 @@
 git+https://github.com/schlegelp/catheat@master
 click==6.7
 cython==0.28.2
-cvxpy==0.4.11
 dit==1.1.0
 fastcluster==1.1.24
 fa2==0.2
