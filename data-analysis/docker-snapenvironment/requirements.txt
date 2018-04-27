@@ -15,6 +15,7 @@ numpy==1.14.2
 networkx==2.1
 pandas==0.22.0
 pydot==1.2.4
+pygfl==1.0.2
 pymc3==3.4.1
 python-louvain==0.10
 PyYAML==3.12

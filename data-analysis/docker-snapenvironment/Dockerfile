@@ -17,6 +17,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get install -y --force-yes fonts-humor-sans \
                                       git \
                                       graphviz \
+                                      libgsl-dev \
                                       libhdf5-dev \
                                       nodejs \
                                       openjdk-8-jdk \
