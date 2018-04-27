@@ -17,7 +17,6 @@ pandas==0.22.0
 pydot==1.2.4
 python-louvain==0.10
 PyYAML==3.12
-git+https://github.com/pymc-devs/pymc
 requests==2.18.4
 rpy2==2.9.3
 scikits.bootstrap==1.0.0
