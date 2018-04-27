@@ -15,6 +15,7 @@ numpy==1.14.2
 networkx==2.1
 pandas==0.22.0
 pydot==1.2.4
+pymc3==3.4.1
 python-louvain==0.10
 PyYAML==3.12
 requests==2.18.4
@@ -25,7 +26,6 @@ scipy==1.0.1
 git+https://github.com/lukauskas/seaborn.git@8f26af66e6a23333a706c3e5d04977ea00c0cde3#egg=seaborn
 sh==1.12.14
 statsmodels==0.8.0
-https://github.com/Theano/Theano/tarball/master#egg=Theano-0.7dev
 tables==3.4.3
 tqdm==4.23.1
 tzlocal==1.5.1
