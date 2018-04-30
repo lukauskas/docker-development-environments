@@ -17,11 +17,12 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get install -y --force-yes fonts-humor-sans \
                                       git \
                                       graphviz \
+                                      libblas-dev \
                                       libgsl-dev \
                                       libhdf5-dev \
+                                      liblapack-dev \
                                       nodejs \
                                       openjdk-8-jdk \
-                                      python3-graph-tool \
                                       r-base \
                                       ttf-freefont \
     && apt-get -yq autoremove \
@@ -50,7 +51,7 @@ RUN pip install --upgrade pip \
     # This needs Cython et al to be installed beforehand
     && pip install git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb \
     # One more... cvxpy
-    && pip install cvxpy==0.4.11 \
+    && pip install cvxpy==0.4.11 \docker
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
