@@ -51,7 +51,7 @@ RUN pip install --upgrade pip \
     # This needs Cython et al to be installed beforehand
     && pip install git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb \
     # One more... cvxpy
-    && pip install cvxpy==0.4.11 \docker
+    && pip install cvxpy==0.4.11 \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
