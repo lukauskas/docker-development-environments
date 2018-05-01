@@ -23,6 +23,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
                                       liblapack-dev \
                                       nodejs \
                                       openjdk-8-jdk \
+                                      python-dev \
                                       r-base \
                                       ttf-freefont \
     && apt-get -yq autoremove \
@@ -55,5 +56,23 @@ RUN pip install --upgrade pip \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
+
+RUN /bin/bash -c 'source /usr/local/bin/virtualenvwrapper.sh && mkvirtualenv py2 -p `which python2`' \
+    && /root/.virtualenvs/py2/bin/pip install numpy scipy pandas tables \
+    && /root/.virtualenvs/py2/bin/pip install cvxpy \
+    # snap.py
+    && cd /tmp \
+    && wget http://snap.stanford.edu/snappy/release/snap-4.0.0-4.0-centos6.5-x64-py2.6.tar.gz -O /tmp/snappy.tar.gz \
+    && tar xvf snappy.tar.gz && cd snap-4.0.0-4.0-centos6.5-x64-py2.6 \
+    && /root/.virtualenvs/py2/bin/python setup.py install \
+    # snapvx
+    && cd /tmp \
+    && wget -q http://snap.stanford.edu/snapvx/release/snapvx-0.5.tar.gz -O snapvx-0.5.tar.gz \
+    && tar xvf snapvx-0.5.tar.gz && cd snapvx-0.5 \
+    && /root/.virtualenvs/py2/bin/python setup.py install \
+    # cleanup
+    && cd \
+    && rm -rf /tmp/snap* \
+    && rm -rf ~/.cache/pip
 
 RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
