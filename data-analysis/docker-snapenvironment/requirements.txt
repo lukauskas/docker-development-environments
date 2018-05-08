@@ -1,3 +1,4 @@
+adjustText==0.7
 git+https://github.com/schlegelp/catheat@master
 click==6.7
 cython==0.28.2
