@@ -38,6 +38,9 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://biocond
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("corpcor")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("fdrtool")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ppcor")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("psych")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("GPArotation")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("nFactors")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("matrixcalc")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")' \
     # Cache Reactome and GO Data so it's faster when we need to run it
