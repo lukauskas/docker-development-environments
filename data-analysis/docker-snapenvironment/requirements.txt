@@ -23,7 +23,7 @@ requests==2.18.4
 rpy2==2.9.3
 scikits.bootstrap==1.0.0
 scikit-learn==0.19.1
-scipy==1.0.1
+scipy==1.1.0
 git+https://github.com/lukauskas/seaborn.git@8f26af66e6a23333a706c3e5d04977ea00c0cde3#egg=seaborn
 sh==1.12.14
 statsmodels==0.8.0
