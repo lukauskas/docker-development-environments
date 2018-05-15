@@ -16,7 +16,7 @@ scikits.bootstrap==1.0.0
 scikit-learn==0.19.1
 scipy==1.1.0
 git+https://github.com/mwaskom/seaborn.git@9eaaa535b3648bbfced5ad78f81e1efc0d02167c#egg=seaborn
-statsmodels==0.8.0
+statsmodels==0.9.0
 tables==3.4.3
 tqdm==4.23.3
 xlrd==1.1.0
