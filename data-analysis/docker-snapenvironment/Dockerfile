@@ -14,7 +14,8 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && echo "deb http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
     && echo "deb-src http://downloads.skewed.de/apt/stretch stretch main" >> /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install -y --force-yes fonts-humor-sans \
+    && apt-get install -y --force-yes cmake \
+                                      fonts-humor-sans \
                                       git \
                                       graphviz \
                                       libblas-dev \
