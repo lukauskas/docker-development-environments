@@ -17,11 +17,13 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get install -y --force-yes fonts-humor-sans \
                                       git \
                                       graphviz \
+                                      libblas-dev \
                                       libgsl-dev \
                                       libhdf5-dev \
+                                      liblapack-dev \
                                       nodejs \
                                       openjdk-8-jdk \
-                                      python3-graph-tool \
+                                      python-dev \
                                       r-base \
                                       ttf-freefont \
     && apt-get -yq autoremove \
@@ -37,6 +39,9 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://biocond
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("corpcor")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("fdrtool")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ppcor")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("psych")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("GPArotation")' \
+    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("nFactors")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("matrixcalc")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")' \
     # Cache Reactome and GO Data so it's faster when we need to run it
@@ -54,5 +59,23 @@ RUN pip install --upgrade pip \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
+
+RUN /bin/bash -c 'source /usr/local/bin/virtualenvwrapper.sh && mkvirtualenv py2 -p `which python2`' \
+    && /root/.virtualenvs/py2/bin/pip install numpy scipy pandas tables \
+    && /root/.virtualenvs/py2/bin/pip install cvxpy \
+    # snap.py
+    && cd /tmp \
+    && wget http://snap.stanford.edu/snappy/release/snap-4.0.0-4.0-centos6.5-x64-py2.6.tar.gz -O /tmp/snappy.tar.gz \
+    && tar xvf snappy.tar.gz && cd snap-4.0.0-4.0-centos6.5-x64-py2.6 \
+    && /root/.virtualenvs/py2/bin/python setup.py install \
+    # snapvx
+    && cd /tmp \
+    && wget -q http://snap.stanford.edu/snapvx/release/snapvx-0.5.tar.gz -O snapvx-0.5.tar.gz \
+    && tar xvf snapvx-0.5.tar.gz && cd snapvx-0.5 \
+    && /root/.virtualenvs/py2/bin/python setup.py install \
+    # cleanup
+    && cd \
+    && rm -rf /tmp/snap* \
+    && rm -rf ~/.cache/pip
 
 RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
