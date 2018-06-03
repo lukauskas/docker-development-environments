@@ -2,7 +2,6 @@ biopython==1.71
 cython==0.28.3
 fastcluster==1.1.24
 goatools==0.8.4
-hide_code==0.5.1
 jupyter==1.0.0
 jupyter_contrib_nbextensions==0.5.0
 matplotlib==2.2.2
