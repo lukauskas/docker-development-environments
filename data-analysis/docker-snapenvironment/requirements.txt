@@ -3,7 +3,7 @@ git+https://github.com/schlegelp/catheat@master
 click==6.7
 cython==0.28.3
 dit==1.2.0
-fastcluster==1.1.24
+fastcluster==1.1.25
 fa2==0.2
 forestci==0.3
 joblib==0.11
