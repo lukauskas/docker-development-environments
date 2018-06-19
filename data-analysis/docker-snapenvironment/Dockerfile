@@ -55,6 +55,7 @@ RUN pip install --upgrade pip \
     && pip install git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb \
     # Cvxpy and related solvers (require numpy and others)
     && pip install cvxpy==0.4.11 && pip install dccp==0.1.6 \
+    && pip install -f https://download.mosek.com/stable/wheel/index.html Mosek --user \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
