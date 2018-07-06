@@ -19,6 +19,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
                                       libblas-dev \
                                       libgsl-dev \
                                       libhdf5-dev \
+                                      libudunits2-dev \
                                       liblapack-dev \
                                       nodejs \
                                       openjdk-8-jdk \
