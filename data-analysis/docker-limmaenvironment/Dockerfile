@@ -7,6 +7,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && echo "deb http://ftp.de.debian.org/debian testing main" >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y libhdf5-dev \
+                          libudunits2-dev \
                           pandoc \
                           r-base \
     && apt-get -yq autoremove \
@@ -14,7 +15,7 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && rm -rf /var/lib/apt/lists/*
 
 # Install some needed R packages
-RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://bioconductor.org/biocLite.R"); biocLite(c("limma", "statmod", "qvalue", "edgeR", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db")); install.packages("ggplot2"); install.packages("ggrepel")'
+RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2", dependencies=TRUE); install.packages("ggrepel", dependencies=TRUE); install.packages("ggraph", dependencies=TRUE); source("https://bioconductor.org/biocLite.R"); biocLite(c("limma", "statmod", "qvalue", "edgeR", "enrichplot", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db"));'
 
 ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
