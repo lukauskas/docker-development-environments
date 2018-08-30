@@ -6,7 +6,7 @@ dit==1.2.0
 fastcluster==1.1.25
 fa2==0.2
 forestci==0.3
-joblib==0.12.0
+joblib==0.12.3
 joypy==0.1.8
 jupyter==1.0.0
 lxml==4.2.3
