@@ -13,7 +13,7 @@ palettable==3.1.1
 requests==2.19.1
 rpy2==2.9.4
 scikits.bootstrap==1.0.0
-scikit-learn==0.19.1
+scikit-learn==0.20.0
 scipy==1.1.0
 git+https://github.com/lukauskas/seaborn.git@94f23eee4d93c24e77ca81e4ddc582dcf62b2342#egg=seaborn
 statsmodels==0.9.0
