@@ -17,7 +17,7 @@ networkx==2.1
 pandas==0.23.3
 palettable==3.1.1
 pyclustering==0.8.1
-pydot==1.2.4
+pydot==1.3.0
 git+https://github.com/tansey/gfl.git@147c8700f43959dc612d8250061b2241ac700373#egg=pygfl
 pygraphviz==1.3.1
 pymc3==3.4.1
