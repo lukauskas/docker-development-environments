@@ -4,7 +4,7 @@ click==6.7
 cython==0.28.4
 dit==1.2.0
 fastcluster==1.1.25
-fa2==0.2
+fa2==0.3.4
 forestci==0.3
 joblib==0.12.0
 joypy==0.1.8
