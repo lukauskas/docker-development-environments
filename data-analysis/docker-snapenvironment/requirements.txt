@@ -35,6 +35,6 @@ tables==3.4.4
 tqdm==4.23.4
 tzlocal==1.5.1
 virtualenv==16.0.0
-virtualenvwrapper==4.8.2
+virtualenvwrapper==4.8.3
 xlrd==1.1.0
 XlsxWriter==1.0.5
