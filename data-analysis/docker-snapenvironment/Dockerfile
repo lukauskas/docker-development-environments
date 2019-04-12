@@ -41,16 +41,9 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://biocond
     # Cache Reactome and GO Data so it's faster when we need to run it
     && Rscript -e 'library(clusterProfiler); library(org.Hs.eg.db); library(ReactomePA); enrichGO(c(4312, 8318, 10874, 55143, 55388, 991), OrgDb=org.Hs.eg.db, ont="MF"); enrichPathway(c(4312, 8318, 10874, 55143, 55388, 991));'
 
-COPY --from=builder /tmp/dapg/dapg_complexes/bin/* /usr/bin/
-
 ADD requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
     && pip install --upgrade -r /requirements.txt \
-    # This needs Cython et al to be installed beforehand
-    && pip install git+https://github.com/AmazaspShumik/sklearn-bayes.git@a9fdcb87a9e9a35e0066e8961f6f059fc01b26eb \
-    # Cvxpy and related solvers (require numpy and others)
-    && pip install cvxpy==0.4.11 && pip install dccp==0.1.6 \
-    && pip install -f https://download.mosek.com/stable/wheel/index.html Mosek --user \
     && rm /requirements.txt \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
