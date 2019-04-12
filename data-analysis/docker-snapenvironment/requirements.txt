@@ -1,6 +1,6 @@
 adjustText==0.7.3
 git+https://github.com/schlegelp/catheat@master
-click==6.7
+click==7.0
 cython==0.29.6
 dit==1.2.3
 fastcluster==1.1.25
