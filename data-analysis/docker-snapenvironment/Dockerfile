@@ -24,6 +24,10 @@ RUN echo "deb http://ftp.de.debian.org/debian testing contrib" >> /etc/apt/sourc
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Helvetica. This is not in git, make sure you have it on build.
+COPY fonts/*.ttf  /usr/local/share/fonts/
+RUN fc-cache
+
 # Install some needed R packages
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://bioconductor.org/biocLite.R"); biocLite("minet")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("http://bioconductor.org/biocLite.R"); biocLite(c("AnnotationDbi", "impute", "GO.db", "preprocessCore", "enrichplot", "ReactomePA", "clusterProfiler", "meshes", "org.Hs.eg.db", "GOSemSim")); install.packages("WGCNA")' \
@@ -37,7 +41,6 @@ RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); source("https://biocond
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("GPArotation")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("nFactors")' \
     && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("matrixcalc")' \
-    && Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("devtools"); library("devtools"); install_github("wyguo/RLowPC", ref="a3f741a")' \
     # Cache Reactome and GO Data so it's faster when we need to run it
     && Rscript -e 'library(clusterProfiler); library(org.Hs.eg.db); library(ReactomePA); enrichGO(c(4312, 8318, 10874, 55143, 55388, 991), OrgDb=org.Hs.eg.db, ont="MF"); enrichPathway(c(4312, 8318, 10874, 55143, 55388, 991));'
 
@@ -48,22 +51,4 @@ RUN pip install --upgrade pip \
     && rm -rf ~/.cache/pip \
     && rm -rf /src
 
-RUN /bin/bash -c 'source /usr/local/bin/virtualenvwrapper.sh && mkvirtualenv py2 -p `which python2`' \
-    && /root/.virtualenvs/py2/bin/pip install numpy scipy pandas tables \
-    && /root/.virtualenvs/py2/bin/pip install cvxpy \
-    # snap.py
-    && cd /tmp \
-    && wget http://snap.stanford.edu/snappy/release/snap-4.0.0-4.0-centos6.5-x64-py2.6.tar.gz -O /tmp/snappy.tar.gz \
-    && tar xvf snappy.tar.gz && cd snap-4.0.0-4.0-centos6.5-x64-py2.6 \
-    && /root/.virtualenvs/py2/bin/python setup.py install \
-    # snapvx
-    && cd /tmp \
-    && wget -q http://snap.stanford.edu/snapvx/release/snapvx-0.5.tar.gz -O snapvx-0.5.tar.gz \
-    && tar xvf snapvx-0.5.tar.gz && cd snapvx-0.5 \
-    && /root/.virtualenvs/py2/bin/python setup.py install \
-    # cleanup
-    && cd \
-    && rm -rf /tmp/snap* \
-    && rm -rf ~/.cache/pip
-
-RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc
+RUN mkdir -p /root/.config/matplotlib && echo 'backend : Agg' >> /root/.config/matplotlib/matplotlibrc && echo 'font.sans-serif : helvetica' >> /root/.config/matplotlib/matplotlibrc
