@@ -30,7 +30,7 @@ scipy==1.3.0
 scikit-learn==0.21.1
 git+https://github.com/lukauskas/seaborn.git@94f23eee4d93c24e77ca81e4ddc582dcf62b2342#egg=seaborn
 sh==1.12.14
-statsmodels==0.9.0
+statsmodels==0.10.0
 tables==3.5.1
 tqdm==4.32.1
 tzlocal==1.5.1
