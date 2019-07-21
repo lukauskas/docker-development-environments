@@ -1,5 +1,5 @@
 biopython==1.73
-cython==0.29.7
+cython==0.29.12
 fastcluster==1.1.25
 goatools==0.9.5
 jupyter==1.0.0
