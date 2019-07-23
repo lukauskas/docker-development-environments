@@ -33,7 +33,7 @@ sh==1.12.14
 statsmodels==0.9.0
 tables==3.5.1
 tqdm==4.32.1
-tzlocal==1.5.1
+tzlocal==2.0.0
 virtualenv==16.6.0
 virtualenvwrapper==4.8.4
 xlrd==1.2.0
