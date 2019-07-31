@@ -22,7 +22,7 @@ git+https://github.com/tansey/gfl.git@147c8700f43959dc612d8250061b2241ac700373#e
 pygraphviz==1.5
 pymc3==3.6
 python-louvain==0.13
-PyYAML==5.1
+PyYAML==5.1.2
 requests==2.22.0
 rpy2==3.0.4
 scikits.bootstrap==1.0.0
