@@ -9,7 +9,7 @@ forestci==0.3
 joblib==0.13.2
 joypy==0.1.10
 jupyter==1.0.0
-lxml==4.3.3
+lxml==4.6.5
 matplotlib==3.0.3
 mygene==3.1.0
 numpy==1.16.3
